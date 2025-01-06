@@ -1,14 +1,14 @@
 const express = require('express');
-const { createUser, getUsers } = require('../controllers/userController');
+const { registerUser, getUsers } = require('../controllers/userController');
 
 const router = express.Router();
 
 /**
  * @swagger
- * /api/users:
+ * /api/users/register:
  *   post:
- *     summary: Create a new user
- *     description: Create a user with role (student, staff, HOD, administrator)
+ *     summary: Register a new user
+ *     description: Register a user with role (student, staff, HOD, administrator)
  *     tags: [Users]
  *     requestBody:
  *       required: true
@@ -34,13 +34,13 @@ const router = express.Router();
  *                 enum: [student, staff, HOD, administrator]
  *     responses:
  *       201:
- *         description: User created successfully
+ *         description: User registered successfully
  *       400:
  *         description: Invalid role or bad request
  *       500:
  *         description: Internal server error
  */
-router.post('/', createUser);
+router.post('/register', registerUser);
 
 /**
  * @swagger
