@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
-const setupSwagger = require('./config/swagger');
+const { setupSwagger, swaggerSpec } = require('./config/swagger');
 
 dotenv.config();
 connectDB();
@@ -15,6 +15,11 @@ setupSwagger(app);
 
 // Routes
 app.use('/api/users', userRoutes);
+
+// Swagger JSON Debugging
+app.get('/swagger.json', (req, res) => {
+  res.json(swaggerSpec);
+});
 
 // Default Route
 app.get('/', (req, res) => {

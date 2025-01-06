@@ -1,8 +1,9 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const path = require('path');
 
 const swaggerOptions = {
-  swaggerDefinition: {
+  definition: {
     openapi: '3.0.0',
     info: {
       title: 'Campus Connect API',
@@ -16,14 +17,20 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./routes/*.js'], // Pointing to the route files
+  apis: [
+    './routes/*.js'
+  ]
 };
 
+// Add this for debugging
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
+console.log('Loaded API routes:', 
+  Object.keys(swaggerSpec.paths || {}).join('\n')
+);
 
 const setupSwagger = (app) => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   console.log('✅ Swagger Docs available at: http://localhost:5000/api-docs');
 };
 
-module.exports = setupSwagger;
+module.exports = { setupSwagger, swaggerSpec };
