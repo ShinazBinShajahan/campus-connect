@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
     account_status: {
       type: String,
       enum: ['active', 'inactive'],
-      default: 'active',
+      default: 'inactive',
     },
   },
   { timestamps: true, discriminatorKey: 'role' }
