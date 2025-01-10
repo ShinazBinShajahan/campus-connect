@@ -15,7 +15,7 @@ const router = express.Router();
  * /api/users/register:
  *   post:
  *     summary: Register a new user
- *     description: "Register a user with one of the following roles - student, staff, HOD, administrator."
+ *     description: Register a user with one of the following roles - student, staff, HOD, administrator.
  *     tags: 
  *       - Users
  *     requestBody:
