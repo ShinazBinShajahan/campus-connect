@@ -22,7 +22,7 @@ const swaggerOptions = {
   ]
 };
 
-// Add this for debugging
+
 const swaggerSpec = swaggerJsDoc(swaggerOptions);
 console.log('Loaded API routes:', 
   Object.keys(swaggerSpec.paths || {}).join('\n')
